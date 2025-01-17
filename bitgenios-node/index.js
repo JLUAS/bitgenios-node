@@ -2,11 +2,13 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const nodemailer = require('nodemailer');
-
+const dotenv = require('dotenv')
 const app = express();
 app.use(cors());
 app.use(bodyParser.json());
+dotenv.config({ path: './.env' });
 
+const pass = process.env.PASS
 const port = 3000;
 
 // Configuración del transporte de correo
@@ -16,7 +18,7 @@ const transporter = nodemailer.createTransport({
   secure: true, // Para SSL
   auth: {
     user: 'contacto@bitgenios.com',
-    pass: 'c0nt4c70-bg%c0m.'
+    pass: pass
   }
 });
 
@@ -27,7 +29,7 @@ app.post('/send-email', async (req, res) => {
   const { name, email, message } = req.body;
 
   const mailOptions = {
-    from: 'contacto@bitgenios.com', // Usa siempre el remitente autenticado
+    from: 'contacto@bitgenios.com', 
     to: 'contacto@bitgenios.com',
     subject: `Contacto desde la página web - ${name}`,
     text: `
@@ -38,7 +40,7 @@ app.post('/send-email', async (req, res) => {
   };
 
   const mailOptions2 = {
-    from: 'contacto@bitgenios.com', // Usa siempre el remitente autenticado
+    from: 'contacto@bitgenios.com', 
     to: email,
     subject: 'Gracias por ponerte en contacto',
     text: `Hola ${name},\n\nGracias por ponerte en contacto con nosotros. Tu mensaje ha sido recibido correctamente. Nos pondremos en contacto contigo lo antes posible.\n\nSaludos,\nEl equipo de BITGENIOS`
