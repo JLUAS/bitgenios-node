@@ -11,10 +11,12 @@ const port = 3000;
 app.use(bodyParser.json());
 
 const transporter = nodemailer.createTransport({
-  service: 'gmail',
+  host:'mail.bitgenios.com',
+  port: '995',
+  secure: 'false',
   auth: {
-    user: 'jlurquieta1@gmail.com', // tu correo electrónico
-    pass: 'xufi ofky hnti nsrp' // la contraseña de aplicación generada
+    user: 'contacto@bitgenios.com',
+    pass: 'c0nt4c70-bg%c0m.' 
   }
 });
 
