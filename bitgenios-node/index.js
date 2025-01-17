@@ -19,7 +19,8 @@ const transporter = nodemailer.createTransport({
   auth: {
     user: 'contacto@bitgenios.com',
     pass: pass
-  }
+  },
+  connectionTimeout: 200000 // Tiempo en milisegundos
 });
 
 
