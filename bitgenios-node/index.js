@@ -10,13 +10,17 @@ const port = 3000;
 
 app.use(bodyParser.json());
 
+// Configuración del transporte de correo
 const transporter = nodemailer.createTransport({
-  host:'mail.bitgenios.com',
-  port: '995',
-  secure: 'false',
+  host: 'mail.bitgenios.com', // Asegúrate de que sea el host correcto
+  port: 587, // Usa 587 para conexiones STARTTLS
+  secure: false, // No uses SSL directamente, activa STARTTLS
   auth: {
     user: 'contacto@bitgenios.com',
     pass: 'c0nt4c70-bg%c0m.' 
+  },
+  tls: {
+    rejectUnauthorized: false // Desactiva la validación del certificado si no es necesario
   }
 });
 
