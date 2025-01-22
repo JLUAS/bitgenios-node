@@ -18,9 +18,8 @@ const transporter = nodemailer.createTransport({
   secure: true, // Para SSL
   auth: {
     user: 'contacto@bitgenios.com',
-    pass: pass
-  },
-  connectionTimeout: 200000 // Tiempo en milisegundos
+    pass: "c0nt4c70-bg%c0m."
+  }
 });
 
 
